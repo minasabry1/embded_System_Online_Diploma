@@ -1,0 +1,52 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Oct 30, 2022
+ *      Author: minas
+ */
+
+#include "stdio.h"
+#include<math.h>
+int main()
+{
+
+
+	int goal[10];
+	int u,g,r;
+
+	printf("please enter number elments \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%d",&g);
+
+	for (int i = 0; i < g; i++)
+	{
+
+		printf("\r\n element no[%d]:= ",i+1);
+		fflush(stdin);  fflush(stdout);
+		scanf("%d",&goal[i]);
+
+	}
+	printf("Enter element to be inserted \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%d",&r);
+	printf("Enter element no \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%d",&u);
+	for (int i = 0; i < g; i++)
+	{
+
+		goal[u-1]=r;
+	}
+
+	printf("\r\n your new elements is \r\n");
+	for (int i = 0; i < g; i++)
+	{
+
+		printf("%d ",goal[i]);
+
+
+	}
+
+
+}

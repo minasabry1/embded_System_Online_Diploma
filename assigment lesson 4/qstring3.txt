@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h>
+
+int main() {
+char Sent[100];
+char temp;
+int i, j = 0;
+
+printf("\nEnter the string :");
+fflush(stdin); fflush(stdout);
+gets(Sent);
+i=0;
+j = strlen(Sent) - 1;
+while (i < j) {
+temp = Sent[i];
+Sent[i] = Sent[j];
+Sent[j] = temp;
+i++;
+j--;
+
+}
+
+printf("Reverse string is :%s", Sent);
+return (0);
+}

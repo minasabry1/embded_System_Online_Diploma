@@ -1,0 +1,35 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Oct 30, 2022
+ *      Author: minas
+ */
+
+#include "stdio.h"
+#include<math.h>
+int main()
+{
+
+
+
+	float x[20];
+	float sum=0;
+	float avg;
+	int n;
+	printf("please enter number of inputs \r\n");
+	fflush(stdin); fflush(stdout);
+	scanf("%d",&n);
+		for (int j=0;j<n;j++){
+			printf("\r\n enter %d number:= ",j);
+			fflush(stdin);  fflush(stdout);
+			scanf("%f",&x[j]);
+			sum+=x[j];
+			avg=sum/n;
+		}
+
+printf("\r\n the average :=%f ",avg);
+
+	return 0;
+}
+

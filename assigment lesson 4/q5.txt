@@ -1,0 +1,46 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Oct 30, 2022
+ *      Author: minas
+ */
+
+#include "stdio.h"
+#include<math.h>
+int main()
+{
+
+
+	int goal[10];
+	int u,g,r;
+
+	printf("please enter number elments \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%d",&g);
+
+	for (int i = 0; i < g; i++)
+	{
+
+		printf("\r\n element no[%d]:= ",i+1);
+		fflush(stdin);  fflush(stdout);
+		scanf("%d",&goal[i]);
+
+	}
+	printf("Enter element to be searched \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%d",&r);
+
+	for (int i = 0; i < g; i++)
+	{
+
+		if(goal[i] ==r){
+			printf("\r\n founded :)");
+		}
+
+	}
+
+
+
+
+}

@@ -1,0 +1,58 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Oct 30, 2022
+ *      Author: minas
+ */
+
+#include "stdio.h"
+#include<math.h>
+int main()
+{
+
+
+	float first[10][10];
+	float trans[10][10];
+	int r,c;
+
+	printf("please enter number of rows and coloum \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%d %d",&r,&c);
+
+	for (int i = 0; i < r; i++)
+	{
+		for (int j = 0; j < c; j++){
+			printf("\r\n matrix n[%d][%d]:= ",i,j);
+			fflush(stdin);  fflush(stdout);
+			scanf("%f",&first[i][j]);
+		}
+	}
+	printf("your original matrix \r\n");
+	for (int i = 0; i < r; i++)
+	{
+		for (int j = 0; j < c; j++)
+		{
+			printf("%0.2f ",first[i][j]);
+		}
+		printf("\n");
+	}
+	for (int i = 0; i < r; i++)
+	{
+		for (int j=0;j<c;++j)
+		{
+			trans[i][j]=first[j][i];
+		}
+	}
+	printf("\r\n your transpose matrix is \r\n");
+	for (int i = 0; i < r; i++)
+	{
+		for (int j = 0; j < c; j++)
+		{
+			printf("%0.2f ",trans[i][j]);
+		}
+
+	}
+
+	return 0;
+}

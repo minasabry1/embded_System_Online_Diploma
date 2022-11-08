@@ -1,0 +1,33 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Oct 30, 2022
+ *      Author: minas
+ */
+
+#include "stdio.h"
+#include<math.h>
+#include<string.h>
+int main()
+{
+	char Sent[30];
+	char goal;
+	int u=0;
+	printf("please enter the string \r\n");
+	fflush(stdin);  fflush(stdout);
+	gets(Sent);
+	printf("please enter the char wanted to check \r\n");
+	fflush(stdin);  fflush(stdout);
+	scanf("%c",&goal);
+	for (int i = 0; i <strlen(Sent); i++)
+	{
+		if(goal ==Sent[i]){
+			u++;
+
+		}
+	}
+	printf("Number of char repeated= : %d\r\n",u);
+}
+
+
