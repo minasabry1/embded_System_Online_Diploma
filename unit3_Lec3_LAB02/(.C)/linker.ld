@@ -5,22 +5,32 @@ MEMORY {
 	SRAM(RWX) : ORIGIN = 0x20000000, LENGTH = 20k
 }
 
-SECTIONS {
+SECTIONS
+{	
 	.text : {
-		startup.o(.vectors)
-		*(.text)
-		E_text = .;
-	}> Flash 
+		*(.vectors*)
+		. = ALIGN(4) ;
+		*(.text*)
+		. = ALIGN(4) ;
+		*(.rodata*)
+		. = ALIGN(4) ;
+		_E_text = . ;
+	}>flash
+
 	.data : {
-		S_data = .;
-		*(.data) 
-		E_data = .;
-	}> SRAM AT> Flash
+	_S_Data = . ;
+	*(.data*)
+	. = ALIGN(4) ;
+	_E_Data = . ;	
+	}>sram AT> flash
+	
 	.bss : {
-		S_bss = .;
-		*(.bss)
-		E_bss = .;
-		. = . + 0x1000;
-		Stack_Top = .;
-	}> SRAM
+	_S_Bss = . ;
+	*(.bss*)
+	. = ALIGN(4) ;
+	_E_Bss = . ;
+	. = ALIGN(4) ;
+	. = . +1000 ;
+	_stack_top = . ;
+	}>sram
 }
