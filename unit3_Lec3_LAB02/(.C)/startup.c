@@ -19,7 +19,7 @@ void Reset_Handler() {
 	int i;
 
 	for(i=0;i<Data_size;i++) {
-		*P_Dst = *P_Dst;
+		*P_Dst = *P_Src;
 		P_Dst++;
 		P_Src++;
 	}
