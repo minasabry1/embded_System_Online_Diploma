@@ -1,4 +1,0 @@
-1 Mina Sabry 3.1 1 2 3 4 5
-2 Kiro Sabry 3.67 8 7 6 9 5
-3 Abdallah Elsayed 3.33 3 5 4 9 7
-4 Adam Sohail 2.2 1 2 6 7 3
