@@ -1,0 +1,680 @@
+
+GccApplication3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000039e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  0000039e  00000412  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  00000422  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000454  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000a0  00000000  00000000  00000490  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000b60  00000000  00000000  00000530  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000079d  00000000  00000000  00001090  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000076c  00000000  00000000  0000182d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000130  00000000  00000000  00001f9c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000043f  00000000  00000000  000020cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000003c3  00000000  00000000  0000250b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000070  00000000  00000000  000028ce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   8:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  10:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  14:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  18:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  1c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  20:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  24:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  28:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  2c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  30:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  34:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  38:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  3c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  40:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  44:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  48:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  4c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  50:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ee e9       	ldi	r30, 0x9E	; 158
+  68:	f3 e0       	ldi	r31, 0x03	; 3
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 37       	cpi	r26, 0x70	; 112
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+  76:	0e 94 b3 01 	call	0x366	; 0x366 <main>
+  7a:	0c 94 cd 01 	jmp	0x39a	; 0x39a <_exit>
+
+0000007e <__bad_interrupt>:
+  7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000082 <Keypad_init>:
+#include "KEY_PAD.h"
+int Key_padRow[] = {R0, R1, R2, R3}; //rows of the keypad
+int Key_padCol[] = {C0, C1, C2, C3};//columns
+
+void Keypad_init(){
+	DataDir_KEYPAD_PORT &= ~((1 << R0) | (1 << R1) | (1 << R2) | (1 << R3));//Row>>Input
+  82:	81 b3       	in	r24, 0x11	; 17
+  84:	80 7f       	andi	r24, 0xF0	; 240
+  86:	81 bb       	out	0x11, r24	; 17
+	DataDir_KEYPAD_PORT |= ((1 << C0) | (1 << C1) | (1 << C2) | (1 << C3));//Coloumn>>Output
+  88:	81 b3       	in	r24, 0x11	; 17
+  8a:	80 6f       	ori	r24, 0xF0	; 240
+  8c:	81 bb       	out	0x11, r24	; 17
+	KEYPAD_PORT = 0xFF;
+  8e:	8f ef       	ldi	r24, 0xFF	; 255
+  90:	82 bb       	out	0x12, r24	; 18
+  92:	08 95       	ret
+
+00000094 <Keypad_getkey>:
+}
+
+char Keypad_getkey(){
+  94:	0f 93       	push	r16
+  96:	1f 93       	push	r17
+  98:	cf 93       	push	r28
+  9a:	df 93       	push	r29
+	int i,j;
+	for (i = 0; i < 4; i++){
+  9c:	40 e0       	ldi	r20, 0x00	; 0
+  9e:	50 e0       	ldi	r21, 0x00	; 0
+  a0:	9d c0       	rjmp	.+314    	; 0x1dc <Keypad_getkey+0x148>
+		KEYPAD_PORT |= ((1<<Key_padCol[0]) | (1<<Key_padCol[1]) | (1<<Key_padCol[2]) | (1<<Key_padCol[3]));//All columns are 1
+  a2:	32 b3       	in	r19, 0x12	; 18
+  a4:	e0 e6       	ldi	r30, 0x60	; 96
+  a6:	f0 e0       	ldi	r31, 0x00	; 0
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	8c 01       	movw	r16, r24
+  ae:	00 80       	ld	r0, Z
+  b0:	02 c0       	rjmp	.+4      	; 0xb6 <Keypad_getkey+0x22>
+  b2:	00 0f       	add	r16, r16
+  b4:	11 1f       	adc	r17, r17
+  b6:	0a 94       	dec	r0
+  b8:	e2 f7       	brpl	.-8      	; 0xb2 <Keypad_getkey+0x1e>
+  ba:	ec 01       	movw	r28, r24
+  bc:	02 80       	ldd	r0, Z+2	; 0x02
+  be:	02 c0       	rjmp	.+4      	; 0xc4 <Keypad_getkey+0x30>
+  c0:	cc 0f       	add	r28, r28
+  c2:	dd 1f       	adc	r29, r29
+  c4:	0a 94       	dec	r0
+  c6:	e2 f7       	brpl	.-8      	; 0xc0 <Keypad_getkey+0x2c>
+  c8:	dc 01       	movw	r26, r24
+  ca:	04 80       	ldd	r0, Z+4	; 0x04
+  cc:	02 c0       	rjmp	.+4      	; 0xd2 <Keypad_getkey+0x3e>
+  ce:	aa 0f       	add	r26, r26
+  d0:	bb 1f       	adc	r27, r27
+  d2:	0a 94       	dec	r0
+  d4:	e2 f7       	brpl	.-8      	; 0xce <Keypad_getkey+0x3a>
+  d6:	bc 01       	movw	r22, r24
+  d8:	06 80       	ldd	r0, Z+6	; 0x06
+  da:	02 c0       	rjmp	.+4      	; 0xe0 <Keypad_getkey+0x4c>
+  dc:	66 0f       	add	r22, r22
+  de:	77 1f       	adc	r23, r23
+  e0:	0a 94       	dec	r0
+  e2:	e2 f7       	brpl	.-8      	; 0xdc <Keypad_getkey+0x48>
+  e4:	2c 2f       	mov	r18, r28
+  e6:	20 2b       	or	r18, r16
+  e8:	2a 2b       	or	r18, r26
+  ea:	26 2b       	or	r18, r22
+  ec:	23 2b       	or	r18, r19
+  ee:	22 bb       	out	0x12, r18	; 18
+		KEYPAD_PORT &= ~(1<<Key_padCol[i]);//Each time make one of them is 0 to check if pressed.
+  f0:	22 b3       	in	r18, 0x12	; 18
+  f2:	fa 01       	movw	r30, r20
+  f4:	ee 0f       	add	r30, r30
+  f6:	ff 1f       	adc	r31, r31
+  f8:	e0 5a       	subi	r30, 0xA0	; 160
+  fa:	ff 4f       	sbci	r31, 0xFF	; 255
+  fc:	00 80       	ld	r0, Z
+  fe:	02 c0       	rjmp	.+4      	; 0x104 <Keypad_getkey+0x70>
+ 100:	88 0f       	add	r24, r24
+ 102:	99 1f       	adc	r25, r25
+ 104:	0a 94       	dec	r0
+ 106:	e2 f7       	brpl	.-8      	; 0x100 <Keypad_getkey+0x6c>
+ 108:	80 95       	com	r24
+ 10a:	82 23       	and	r24, r18
+ 10c:	82 bb       	out	0x12, r24	; 18
+		for(j = 0; j < 4; j++){//Loop at each row of the selected coloumn
+ 10e:	60 e0       	ldi	r22, 0x00	; 0
+ 110:	70 e0       	ldi	r23, 0x00	; 0
+ 112:	5e c0       	rjmp	.+188    	; 0x1d0 <Keypad_getkey+0x13c>
+			if (!(keypadPIN & (1 << Key_padRow[j])))//Read the input from which row
+ 114:	80 b3       	in	r24, 0x10	; 16
+ 116:	fb 01       	movw	r30, r22
+ 118:	ee 0f       	add	r30, r30
+ 11a:	ff 1f       	adc	r31, r31
+ 11c:	e8 59       	subi	r30, 0x98	; 152
+ 11e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 120:	20 81       	ld	r18, Z
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	02 2e       	mov	r0, r18
+ 126:	02 c0       	rjmp	.+4      	; 0x12c <Keypad_getkey+0x98>
+ 128:	95 95       	asr	r25
+ 12a:	87 95       	ror	r24
+ 12c:	0a 94       	dec	r0
+ 12e:	e2 f7       	brpl	.-8      	; 0x128 <Keypad_getkey+0x94>
+ 130:	80 fd       	sbrc	r24, 0
+ 132:	4c c0       	rjmp	.+152    	; 0x1cc <Keypad_getkey+0x138>
+			{
+				while(!(keypadPIN & (1 << Key_padRow[j])));//Multi-Pressing.
+ 134:	80 b3       	in	r24, 0x10	; 16
+ 136:	90 e0       	ldi	r25, 0x00	; 0
+ 138:	02 2e       	mov	r0, r18
+ 13a:	02 c0       	rjmp	.+4      	; 0x140 <Keypad_getkey+0xac>
+ 13c:	95 95       	asr	r25
+ 13e:	87 95       	ror	r24
+ 140:	0a 94       	dec	r0
+ 142:	e2 f7       	brpl	.-8      	; 0x13c <Keypad_getkey+0xa8>
+ 144:	80 ff       	sbrs	r24, 0
+ 146:	f6 cf       	rjmp	.-20     	; 0x134 <Keypad_getkey+0xa0>
+				switch(i){
+ 148:	41 30       	cpi	r20, 0x01	; 1
+ 14a:	51 05       	cpc	r21, r1
+ 14c:	c9 f0       	breq	.+50     	; 0x180 <Keypad_getkey+0xec>
+ 14e:	24 f4       	brge	.+8      	; 0x158 <Keypad_getkey+0xc4>
+ 150:	41 15       	cp	r20, r1
+ 152:	51 05       	cpc	r21, r1
+ 154:	41 f0       	breq	.+16     	; 0x166 <Keypad_getkey+0xd2>
+ 156:	3a c0       	rjmp	.+116    	; 0x1cc <Keypad_getkey+0x138>
+ 158:	42 30       	cpi	r20, 0x02	; 2
+ 15a:	51 05       	cpc	r21, r1
+ 15c:	f1 f0       	breq	.+60     	; 0x19a <Keypad_getkey+0x106>
+ 15e:	43 30       	cpi	r20, 0x03	; 3
+ 160:	51 05       	cpc	r21, r1
+ 162:	41 f1       	breq	.+80     	; 0x1b4 <Keypad_getkey+0x120>
+ 164:	33 c0       	rjmp	.+102    	; 0x1cc <Keypad_getkey+0x138>
+					case (0)://1ST COLOUMN
+					if (j == 0)
+ 166:	61 15       	cp	r22, r1
+ 168:	71 05       	cpc	r23, r1
+ 16a:	f1 f1       	breq	.+124    	; 0x1e8 <Keypad_getkey+0x154>
+					 return '7';
+					else if (j == 1)
+ 16c:	61 30       	cpi	r22, 0x01	; 1
+ 16e:	71 05       	cpc	r23, r1
+ 170:	e9 f1       	breq	.+122    	; 0x1ec <Keypad_getkey+0x158>
+					 return '4';
+					else if (j == 2)
+ 172:	62 30       	cpi	r22, 0x02	; 2
+ 174:	71 05       	cpc	r23, r1
+ 176:	e1 f1       	breq	.+120    	; 0x1f0 <Keypad_getkey+0x15c>
+					 return '1';
+					else if (j == 3)
+ 178:	63 30       	cpi	r22, 0x03	; 3
+ 17a:	71 05       	cpc	r23, r1
+ 17c:	39 f5       	brne	.+78     	; 0x1cc <Keypad_getkey+0x138>
+ 17e:	3a c0       	rjmp	.+116    	; 0x1f4 <Keypad_getkey+0x160>
+					 return '?';
+					break;
+					case (1)://2Nd COLOUMN
+					if (j == 0)
+ 180:	61 15       	cp	r22, r1
+ 182:	71 05       	cpc	r23, r1
+ 184:	c9 f1       	breq	.+114    	; 0x1f8 <Keypad_getkey+0x164>
+					 return '8';
+					else if (j == 1)
+ 186:	61 30       	cpi	r22, 0x01	; 1
+ 188:	71 05       	cpc	r23, r1
+ 18a:	c1 f1       	breq	.+112    	; 0x1fc <Keypad_getkey+0x168>
+					 return '5';
+					else if (j == 2)
+ 18c:	62 30       	cpi	r22, 0x02	; 2
+ 18e:	71 05       	cpc	r23, r1
+ 190:	b9 f1       	breq	.+110    	; 0x200 <Keypad_getkey+0x16c>
+					 return '2';
+					else if (j == 3)
+ 192:	63 30       	cpi	r22, 0x03	; 3
+ 194:	71 05       	cpc	r23, r1
+ 196:	d1 f4       	brne	.+52     	; 0x1cc <Keypad_getkey+0x138>
+ 198:	35 c0       	rjmp	.+106    	; 0x204 <Keypad_getkey+0x170>
+					 return '0';
+					break;
+					case (2)://3Rd COLOUMN
+					if (j == 0)
+ 19a:	61 15       	cp	r22, r1
+ 19c:	71 05       	cpc	r23, r1
+ 19e:	a1 f1       	breq	.+104    	; 0x208 <Keypad_getkey+0x174>
+					 return '9';
+					else if (j == 1)
+ 1a0:	61 30       	cpi	r22, 0x01	; 1
+ 1a2:	71 05       	cpc	r23, r1
+ 1a4:	99 f1       	breq	.+102    	; 0x20c <Keypad_getkey+0x178>
+					 return '6';
+					else if (j == 2)
+ 1a6:	62 30       	cpi	r22, 0x02	; 2
+ 1a8:	71 05       	cpc	r23, r1
+ 1aa:	91 f1       	breq	.+100    	; 0x210 <Keypad_getkey+0x17c>
+					 return '3';
+					else if (j == 3)
+ 1ac:	63 30       	cpi	r22, 0x03	; 3
+ 1ae:	71 05       	cpc	r23, r1
+ 1b0:	69 f4       	brne	.+26     	; 0x1cc <Keypad_getkey+0x138>
+ 1b2:	30 c0       	rjmp	.+96     	; 0x214 <Keypad_getkey+0x180>
+					 return '=';
+					break;
+					case (3)://4TH COLOUMN
+					if (j == 0)
+ 1b4:	61 15       	cp	r22, r1
+ 1b6:	71 05       	cpc	r23, r1
+ 1b8:	79 f1       	breq	.+94     	; 0x218 <Keypad_getkey+0x184>
+					 return '/';
+					else if (j == 1)
+ 1ba:	61 30       	cpi	r22, 0x01	; 1
+ 1bc:	71 05       	cpc	r23, r1
+ 1be:	71 f1       	breq	.+92     	; 0x21c <Keypad_getkey+0x188>
+					 return '*';
+					else if (j == 2)
+ 1c0:	62 30       	cpi	r22, 0x02	; 2
+ 1c2:	71 05       	cpc	r23, r1
+ 1c4:	69 f1       	breq	.+90     	; 0x220 <Keypad_getkey+0x18c>
+					 return '-';
+					else if (j == 3)
+ 1c6:	63 30       	cpi	r22, 0x03	; 3
+ 1c8:	71 05       	cpc	r23, r1
+ 1ca:	61 f1       	breq	.+88     	; 0x224 <Keypad_getkey+0x190>
+char Keypad_getkey(){
+	int i,j;
+	for (i = 0; i < 4; i++){
+		KEYPAD_PORT |= ((1<<Key_padCol[0]) | (1<<Key_padCol[1]) | (1<<Key_padCol[2]) | (1<<Key_padCol[3]));//All columns are 1
+		KEYPAD_PORT &= ~(1<<Key_padCol[i]);//Each time make one of them is 0 to check if pressed.
+		for(j = 0; j < 4; j++){//Loop at each row of the selected coloumn
+ 1cc:	6f 5f       	subi	r22, 0xFF	; 255
+ 1ce:	7f 4f       	sbci	r23, 0xFF	; 255
+ 1d0:	64 30       	cpi	r22, 0x04	; 4
+ 1d2:	71 05       	cpc	r23, r1
+ 1d4:	0c f4       	brge	.+2      	; 0x1d8 <Keypad_getkey+0x144>
+ 1d6:	9e cf       	rjmp	.-196    	; 0x114 <Keypad_getkey+0x80>
+	KEYPAD_PORT = 0xFF;
+}
+
+char Keypad_getkey(){
+	int i,j;
+	for (i = 0; i < 4; i++){
+ 1d8:	4f 5f       	subi	r20, 0xFF	; 255
+ 1da:	5f 4f       	sbci	r21, 0xFF	; 255
+ 1dc:	44 30       	cpi	r20, 0x04	; 4
+ 1de:	51 05       	cpc	r21, r1
+ 1e0:	0c f4       	brge	.+2      	; 0x1e4 <Keypad_getkey+0x150>
+ 1e2:	5f cf       	rjmp	.-322    	; 0xa2 <Keypad_getkey+0xe>
+					break;
+				}
+			}
+		}
+	}
+	return 'A';
+ 1e4:	81 e4       	ldi	r24, 0x41	; 65
+ 1e6:	1f c0       	rjmp	.+62     	; 0x226 <Keypad_getkey+0x192>
+			{
+				while(!(keypadPIN & (1 << Key_padRow[j])));//Multi-Pressing.
+				switch(i){
+					case (0)://1ST COLOUMN
+					if (j == 0)
+					 return '7';
+ 1e8:	87 e3       	ldi	r24, 0x37	; 55
+ 1ea:	1d c0       	rjmp	.+58     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 1)
+					 return '4';
+ 1ec:	84 e3       	ldi	r24, 0x34	; 52
+ 1ee:	1b c0       	rjmp	.+54     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 2)
+					 return '1';
+ 1f0:	81 e3       	ldi	r24, 0x31	; 49
+ 1f2:	19 c0       	rjmp	.+50     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 3)
+					 return '?';
+ 1f4:	8f e3       	ldi	r24, 0x3F	; 63
+ 1f6:	17 c0       	rjmp	.+46     	; 0x226 <Keypad_getkey+0x192>
+					break;
+					case (1)://2Nd COLOUMN
+					if (j == 0)
+					 return '8';
+ 1f8:	88 e3       	ldi	r24, 0x38	; 56
+ 1fa:	15 c0       	rjmp	.+42     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 1)
+					 return '5';
+ 1fc:	85 e3       	ldi	r24, 0x35	; 53
+ 1fe:	13 c0       	rjmp	.+38     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 2)
+					 return '2';
+ 200:	82 e3       	ldi	r24, 0x32	; 50
+ 202:	11 c0       	rjmp	.+34     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 3)
+					 return '0';
+ 204:	80 e3       	ldi	r24, 0x30	; 48
+ 206:	0f c0       	rjmp	.+30     	; 0x226 <Keypad_getkey+0x192>
+					break;
+					case (2)://3Rd COLOUMN
+					if (j == 0)
+					 return '9';
+ 208:	89 e3       	ldi	r24, 0x39	; 57
+ 20a:	0d c0       	rjmp	.+26     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 1)
+					 return '6';
+ 20c:	86 e3       	ldi	r24, 0x36	; 54
+ 20e:	0b c0       	rjmp	.+22     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 2)
+					 return '3';
+ 210:	83 e3       	ldi	r24, 0x33	; 51
+ 212:	09 c0       	rjmp	.+18     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 3)
+					 return '=';
+ 214:	8d e3       	ldi	r24, 0x3D	; 61
+ 216:	07 c0       	rjmp	.+14     	; 0x226 <Keypad_getkey+0x192>
+					break;
+					case (3)://4TH COLOUMN
+					if (j == 0)
+					 return '/';
+ 218:	8f e2       	ldi	r24, 0x2F	; 47
+ 21a:	05 c0       	rjmp	.+10     	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 1)
+					 return '*';
+ 21c:	8a e2       	ldi	r24, 0x2A	; 42
+ 21e:	03 c0       	rjmp	.+6      	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 2)
+					 return '-';
+ 220:	8d e2       	ldi	r24, 0x2D	; 45
+ 222:	01 c0       	rjmp	.+2      	; 0x226 <Keypad_getkey+0x192>
+					else if (j == 3)
+					 return '+';
+ 224:	8b e2       	ldi	r24, 0x2B	; 43
+				}
+			}
+		}
+	}
+	return 'A';
+ 226:	df 91       	pop	r29
+ 228:	cf 91       	pop	r28
+ 22a:	1f 91       	pop	r17
+ 22c:	0f 91       	pop	r16
+ 22e:	08 95       	ret
+
+00000230 <LCD_lcd_kick>:
+		if (position < 16 && position >= 0)
+		{
+			LCD_Send_A_Command(LCD_BEGIN_AT_SECOND_RAW+position);
+		}
+	}
+}
+ 230:	88 b3       	in	r24, 0x18	; 24
+ 232:	88 60       	ori	r24, 0x08	; 8
+ 234:	88 bb       	out	0x18, r24	; 24
+ 236:	2f e7       	ldi	r18, 0x7F	; 127
+ 238:	88 e3       	ldi	r24, 0x38	; 56
+ 23a:	91 e0       	ldi	r25, 0x01	; 1
+ 23c:	21 50       	subi	r18, 0x01	; 1
+ 23e:	80 40       	sbci	r24, 0x00	; 0
+ 240:	90 40       	sbci	r25, 0x00	; 0
+ 242:	e1 f7       	brne	.-8      	; 0x23c <LCD_lcd_kick+0xc>
+ 244:	00 c0       	rjmp	.+0      	; 0x246 <LCD_lcd_kick+0x16>
+ 246:	00 00       	nop
+ 248:	88 b3       	in	r24, 0x18	; 24
+ 24a:	87 7f       	andi	r24, 0xF7	; 247
+ 24c:	88 bb       	out	0x18, r24	; 24
+ 24e:	08 95       	ret
+
+00000250 <LCD_check_lcd_isbusy>:
+ 250:	8a b3       	in	r24, 0x1a	; 26
+ 252:	8f 70       	andi	r24, 0x0F	; 15
+ 254:	8a bb       	out	0x1a, r24	; 26
+ 256:	88 b3       	in	r24, 0x18	; 24
+ 258:	84 60       	ori	r24, 0x04	; 4
+ 25a:	88 bb       	out	0x18, r24	; 24
+ 25c:	88 b3       	in	r24, 0x18	; 24
+ 25e:	8d 7f       	andi	r24, 0xFD	; 253
+ 260:	88 bb       	out	0x18, r24	; 24
+ 262:	0e 94 18 01 	call	0x230	; 0x230 <LCD_lcd_kick>
+ 266:	8a b3       	in	r24, 0x1a	; 26
+ 268:	80 6f       	ori	r24, 0xF0	; 240
+ 26a:	8a bb       	out	0x1a, r24	; 26
+ 26c:	88 b3       	in	r24, 0x18	; 24
+ 26e:	8b 7f       	andi	r24, 0xFB	; 251
+ 270:	88 bb       	out	0x18, r24	; 24
+ 272:	08 95       	ret
+
+00000274 <LCD_Send_A_Command>:
+ 274:	cf 93       	push	r28
+ 276:	c8 2f       	mov	r28, r24
+ 278:	0e 94 28 01 	call	0x250	; 0x250 <LCD_check_lcd_isbusy>
+ 27c:	8b b3       	in	r24, 0x1b	; 27
+ 27e:	8f 70       	andi	r24, 0x0F	; 15
+ 280:	9c 2f       	mov	r25, r28
+ 282:	90 7f       	andi	r25, 0xF0	; 240
+ 284:	89 2b       	or	r24, r25
+ 286:	8b bb       	out	0x1b, r24	; 27
+ 288:	88 b3       	in	r24, 0x18	; 24
+ 28a:	89 7f       	andi	r24, 0xF9	; 249
+ 28c:	88 bb       	out	0x18, r24	; 24
+ 28e:	0e 94 18 01 	call	0x230	; 0x230 <LCD_lcd_kick>
+ 292:	2f ef       	ldi	r18, 0xFF	; 255
+ 294:	30 e7       	ldi	r19, 0x70	; 112
+ 296:	82 e0       	ldi	r24, 0x02	; 2
+ 298:	21 50       	subi	r18, 0x01	; 1
+ 29a:	30 40       	sbci	r19, 0x00	; 0
+ 29c:	80 40       	sbci	r24, 0x00	; 0
+ 29e:	e1 f7       	brne	.-8      	; 0x298 <LCD_Send_A_Command+0x24>
+ 2a0:	00 c0       	rjmp	.+0      	; 0x2a2 <LCD_Send_A_Command+0x2e>
+ 2a2:	00 00       	nop
+ 2a4:	2b b3       	in	r18, 0x1b	; 27
+ 2a6:	30 e1       	ldi	r19, 0x10	; 16
+ 2a8:	c3 9f       	mul	r28, r19
+ 2aa:	c0 01       	movw	r24, r0
+ 2ac:	11 24       	eor	r1, r1
+ 2ae:	92 2f       	mov	r25, r18
+ 2b0:	9f 70       	andi	r25, 0x0F	; 15
+ 2b2:	89 2b       	or	r24, r25
+ 2b4:	8b bb       	out	0x1b, r24	; 27
+ 2b6:	88 b3       	in	r24, 0x18	; 24
+ 2b8:	89 7f       	andi	r24, 0xF9	; 249
+ 2ba:	88 bb       	out	0x18, r24	; 24
+ 2bc:	0e 94 18 01 	call	0x230	; 0x230 <LCD_lcd_kick>
+ 2c0:	cf 91       	pop	r28
+ 2c2:	08 95       	ret
+
+000002c4 <LCD_clear_screen>:
+ 2c4:	81 e0       	ldi	r24, 0x01	; 1
+ 2c6:	0e 94 3a 01 	call	0x274	; 0x274 <LCD_Send_A_Command>
+ 2ca:	08 95       	ret
+
+000002cc <LCD_init>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 2cc:	8f e3       	ldi	r24, 0x3F	; 63
+ 2ce:	9c e9       	ldi	r25, 0x9C	; 156
+ 2d0:	01 97       	sbiw	r24, 0x01	; 1
+ 2d2:	f1 f7       	brne	.-4      	; 0x2d0 <LCD_init+0x4>
+ 2d4:	00 c0       	rjmp	.+0      	; 0x2d6 <LCD_init+0xa>
+ 2d6:	00 00       	nop
+	LCD_Control &=~(1<<RW_SWITCH);//Rest
+}
+
+void LCD_init(void){//initializes the LCD display with the required settings.
+	_delay_ms(20);
+	LCD_check_lcd_isbusy();
+ 2d8:	0e 94 28 01 	call	0x250	; 0x250 <LCD_check_lcd_isbusy>
+	LCD_Control_Direction |= (1<<Enable_Switch | 1<<RW_SWITCH | 1<<RS_SWITCH);//DDRB>>OUTPUT (Enable,RS,RW)
+ 2dc:	87 b3       	in	r24, 0x17	; 23
+ 2de:	8e 60       	ori	r24, 0x0E	; 14
+ 2e0:	87 bb       	out	0x17, r24	; 23
+	LCD_Control &= ~(1<<Enable_Switch | 1<<RS_SWITCH | 1<<RW_SWITCH);//PortB
+ 2e2:	88 b3       	in	r24, 0x18	; 24
+ 2e4:	81 7f       	andi	r24, 0xF1	; 241
+ 2e6:	88 bb       	out	0x18, r24	; 24
+	LCD_Port_Direction =0xFF;
+ 2e8:	8f ef       	ldi	r24, 0xFF	; 255
+ 2ea:	8a bb       	out	0x1a, r24	; 26
+ 2ec:	8f e2       	ldi	r24, 0x2F	; 47
+ 2ee:	95 e7       	ldi	r25, 0x75	; 117
+ 2f0:	01 97       	sbiw	r24, 0x01	; 1
+ 2f2:	f1 f7       	brne	.-4      	; 0x2f0 <LCD_init+0x24>
+ 2f4:	00 c0       	rjmp	.+0      	; 0x2f6 <LCD_init+0x2a>
+ 2f6:	00 00       	nop
+	_delay_ms(15);
+	LCD_clear_screen();
+ 2f8:	0e 94 62 01 	call	0x2c4	; 0x2c4 <LCD_clear_screen>
+	
+	LCD_Send_A_Command(LCD_FUNCTION_8BIT_2LINES);
+    #endif // Eight_Bit_Mode
+
+	#ifdef Four_Bit_Mode
+	LCD_Send_A_Command(0x02);
+ 2fc:	82 e0       	ldi	r24, 0x02	; 2
+ 2fe:	0e 94 3a 01 	call	0x274	; 0x274 <LCD_Send_A_Command>
+	LCD_Send_A_Command(LCD_FUNCTION_4BIT_2LINES);
+ 302:	88 e2       	ldi	r24, 0x28	; 40
+ 304:	0e 94 3a 01 	call	0x274	; 0x274 <LCD_Send_A_Command>
+	#endif // Eight_Bit_Mode	
+	
+	LCD_Send_A_Command(LCD_ENTRY_MODE);
+ 308:	86 e0       	ldi	r24, 0x06	; 6
+ 30a:	0e 94 3a 01 	call	0x274	; 0x274 <LCD_Send_A_Command>
+	LCD_Send_A_Command(LCD_BEGIN_AT_FIRST_RAW);
+ 30e:	80 e8       	ldi	r24, 0x80	; 128
+ 310:	0e 94 3a 01 	call	0x274	; 0x274 <LCD_Send_A_Command>
+	LCD_Send_A_Command(LCD_DISP_ON_CURSOR_BLINK);//turns on the display, the cursor and makes the cursor blink.
+ 314:	8f e0       	ldi	r24, 0x0F	; 15
+ 316:	0e 94 3a 01 	call	0x274	; 0x274 <LCD_Send_A_Command>
+ 31a:	08 95       	ret
+
+0000031c <LCD_Send_A_Character>:
+		LCD_PORT = (LCD_PORT & 0x0F) | (command << 4);
+		LCD_Control &= ~ ((1<<RW_SWITCH)|(1<<RS_SWITCH));
+		LCD_lcd_kick();
+	#endif	
+}
+void LCD_Send_A_Character(unsigned char character){//writes a character to the LCD display.
+ 31c:	cf 93       	push	r28
+ 31e:	c8 2f       	mov	r28, r24
+	_delay_ms(1);
+	LCD_lcd_kick();
+	#endif // Eight_Bit_Mode
+	
+    #ifdef Four_Bit_Mode
+	LCD_check_lcd_isbusy();
+ 320:	0e 94 28 01 	call	0x250	; 0x250 <LCD_check_lcd_isbusy>
+	LCD_PORT = (LCD_PORT & 0x0F) | (character & 0xF0);
+ 324:	8b b3       	in	r24, 0x1b	; 27
+ 326:	8f 70       	andi	r24, 0x0F	; 15
+ 328:	9c 2f       	mov	r25, r28
+ 32a:	90 7f       	andi	r25, 0xF0	; 240
+ 32c:	89 2b       	or	r24, r25
+ 32e:	8b bb       	out	0x1b, r24	; 27
+	LCD_Control |= 1<<RS_SWITCH; //turn RS ON for Data mode.
+ 330:	88 b3       	in	r24, 0x18	; 24
+ 332:	82 60       	ori	r24, 0x02	; 2
+ 334:	88 bb       	out	0x18, r24	; 24
+	LCD_Control &= ~(1<<RW_SWITCH);//turn RW off so you can write.
+ 336:	88 b3       	in	r24, 0x18	; 24
+ 338:	8b 7f       	andi	r24, 0xFB	; 251
+ 33a:	88 bb       	out	0x18, r24	; 24
+	LCD_lcd_kick ();
+ 33c:	0e 94 18 01 	call	0x230	; 0x230 <LCD_lcd_kick>
+	LCD_PORT = (LCD_PORT & 0x0F) | (character << 4);
+ 340:	2b b3       	in	r18, 0x1b	; 27
+ 342:	30 e1       	ldi	r19, 0x10	; 16
+ 344:	c3 9f       	mul	r28, r19
+ 346:	c0 01       	movw	r24, r0
+ 348:	11 24       	eor	r1, r1
+ 34a:	92 2f       	mov	r25, r18
+ 34c:	9f 70       	andi	r25, 0x0F	; 15
+ 34e:	89 2b       	or	r24, r25
+ 350:	8b bb       	out	0x1b, r24	; 27
+	LCD_Control |= 1<<RS_SWITCH; //turn RS ON for Data mode.
+ 352:	88 b3       	in	r24, 0x18	; 24
+ 354:	82 60       	ori	r24, 0x02	; 2
+ 356:	88 bb       	out	0x18, r24	; 24
+	LCD_Control &= ~ (1<<RW_SWITCH);//turn RW off so you can write.
+ 358:	88 b3       	in	r24, 0x18	; 24
+ 35a:	8b 7f       	andi	r24, 0xFB	; 251
+ 35c:	88 bb       	out	0x18, r24	; 24
+	LCD_lcd_kick();
+ 35e:	0e 94 18 01 	call	0x230	; 0x230 <LCD_lcd_kick>
+	#endif
+	}
+ 362:	cf 91       	pop	r28
+ 364:	08 95       	ret
+
+00000366 <main>:
+#include "KEY_PAD/KEY_PAD.h"
+
+int main(void)
+
+{
+    LCD_init();
+ 366:	0e 94 66 01 	call	0x2cc	; 0x2cc <LCD_init>
+	Keypad_init();
+ 36a:	0e 94 41 00 	call	0x82	; 0x82 <Keypad_init>
+ 36e:	2f e7       	ldi	r18, 0x7F	; 127
+ 370:	88 e3       	ldi	r24, 0x38	; 56
+ 372:	91 e0       	ldi	r25, 0x01	; 1
+ 374:	21 50       	subi	r18, 0x01	; 1
+ 376:	80 40       	sbci	r24, 0x00	; 0
+ 378:	90 40       	sbci	r25, 0x00	; 0
+ 37a:	e1 f7       	brne	.-8      	; 0x374 <main+0xe>
+ 37c:	00 c0       	rjmp	.+0      	; 0x37e <main+0x18>
+ 37e:	00 00       	nop
+    _delay_ms(50);
+    unsigned char key_pressed;
+    while(1){
+	    key_pressed = Keypad_getkey();
+ 380:	0e 94 4a 00 	call	0x94	; 0x94 <Keypad_getkey>
+	    switch(key_pressed){
+ 384:	8f 33       	cpi	r24, 0x3F	; 63
+ 386:	19 f0       	breq	.+6      	; 0x38e <main+0x28>
+ 388:	81 34       	cpi	r24, 0x41	; 65
+ 38a:	d1 f3       	breq	.-12     	; 0x380 <main+0x1a>
+ 38c:	03 c0       	rjmp	.+6      	; 0x394 <main+0x2e>
+		    case 'A':
+		    break;
+		    case '?':
+		    LCD_clear_screen();
+ 38e:	0e 94 62 01 	call	0x2c4	; 0x2c4 <LCD_clear_screen>
+		    break;
+ 392:	f6 cf       	rjmp	.-20     	; 0x380 <main+0x1a>
+		    default:
+		    LCD_Send_A_Character(key_pressed);
+ 394:	0e 94 8e 01 	call	0x31c	; 0x31c <LCD_Send_A_Character>
+		    break;
+ 398:	f3 cf       	rjmp	.-26     	; 0x380 <main+0x1a>
+
+0000039a <_exit>:
+ 39a:	f8 94       	cli
+
+0000039c <__stop_program>:
+ 39c:	ff cf       	rjmp	.-2      	; 0x39c <__stop_program>
