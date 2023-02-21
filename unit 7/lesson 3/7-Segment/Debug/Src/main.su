@@ -1,0 +1,5 @@
+main.c:41:6:LCD_Send_String	24	static
+main.c:60:6:clock_Init	4	static
+main.c:67:6:GPIOB_INIT	16	static
+main.c:110:1:my_wait	24	static
+main.c:116:5:main	64	static
