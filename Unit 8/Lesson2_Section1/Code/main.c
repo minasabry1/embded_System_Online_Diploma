@@ -22,7 +22,7 @@ int main(void)
 {	
 	uint8_t x;
  	uint32_t num;
- 	char name[]={"sabry"};
+ 	char name[]={"	sabry"};
 	char name2[30];
 	LCD_clear_screen();
 	LCD_init();
@@ -34,20 +34,22 @@ int main(void)
 	Uart_Send('I');
 	Uart_Send('N');
 	Uart_Send('A');
+	
+//  Uart_Send32(20);
+//  Uart_Send32(300);
+//  Uart_Send32(999);
 	UART_Send_String(name);
-   // Uart_Send32(20);
-// Uart_Send32(300);
-// Uart_Send32(400);
-// UART_Send_String("Mina sabry");
+ 
 
 	/* Replace with your application code */
 	while (1)
 	{
 	 LCD_GOTO_XY(2,0);	
-	// x= Uart_Recieve();//send from terminal to MCU to LCD.*/
-	//num=Uart_Recieve32();
-	 LCD_Send_A_Character(Uart_Recieve());
-	//LCD_Send_A_String(UART_Receive_String());
+	 //LCD_Send_A_Character(Uart_Recieve());///send from terminal to MCU to LCD.*/
+	//LCD_Send_A_String(Uart_Recieve32());
+	LCD_Send_A_String(UART_Receive_String());
+	LCD_Send_A_String("							");
+
 }
 
 }

@@ -5,7 +5,7 @@
  *  Author: minas
  */ 
 #include "C:\Users\minas\Documents\Atmel Studio\7.0\Lesson4_Unit7_Drivers\Lesson4_Unit7_Drivers\MCAL\Include\UART.h"
-
+char data[50];
 void Uart_init(void){
 	//Baud Rate
 	UBRRL =51;
@@ -48,7 +48,10 @@ void Uart_Send32(uint32_t Num){
 // 	Uart_Send((uint8_t)(Num>>16));//send third 8 bits by shifting to LSB
 // 	Uart_Send((uint8_t)(Num>>24));//send fourth 8 bits by shifting to LSB
 
-uint8_t* p=&Num;//ptr can be use as a array what ever what its points to.
+char  str[7];
+sprintf(str,"%d",Num);  // Adjust the formatting to your liking.
+
+uint8_t* p=str;//ptr can be use as a array what ever what its points to.
 Uart_Send(p[0]);
 Uart_Send(p[1]);
 Uart_Send(p[2]);
@@ -64,14 +67,17 @@ uint32_t Uart_Recieve32(void){
 // 	uint32_t sum=0;
 // 	sum =b1|(uint32_t)b2<<8|(uint32_t)b3<<16|(uint32_t)b4<<24;//First Receing first 8 bits(b1) 
 													//then (b2)so shift left with 8 to be sceond 8 nits and so on.
-													
-uint32_t num;
-uint8_t *p = &num;
+char  str[7];
+//uint32_t num;									
+uint8_t *p = str;
 p[0] = Uart_Recieve();
 p[1] = Uart_Recieve();
 p[2] = Uart_Recieve();
 p[3] = Uart_Recieve();
-return num;
+sprintf(str,"%d",str);  // Adjust the formatting to your liking.	
+return str;
+
+
 }
 
 void UART_Send_String (uint8_t* str)
@@ -83,7 +89,7 @@ void UART_Send_String (uint8_t* str)
 
 char* UART_Receive_String (void)
 {
-	char data[50],i;
+	char i;
 	char get =Uart_Recieve();
 	for(i=0;get !='#';i++)
 	{
