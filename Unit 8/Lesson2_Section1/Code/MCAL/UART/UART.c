@@ -81,17 +81,15 @@ void UART_Send_String (uint8_t* str)
 	}
 }
 
-char arr[50];
 char* UART_Receive_String (void)
 {
-	 char* str = arr;
-
-	 while(1){
-		 *(str) = Uart_Recieve();
-		 if(*(str) == '#'){
-			 break;
-		 }
-		 str++;
-	 }
-	 return arr;
+	char data[50],i;
+	char get =Uart_Recieve();
+	for(i=0;get !='#';i++)
+	{
+		data[i]=get;
+		get =Uart_Recieve();
+	}
+	data[i]='\0';
+	return data;
 }

@@ -4,13 +4,6 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               HAL/KEY_PAD/KEY_PAD.o (__do_copy_data)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                              MCAL/UART/UART.o (__do_clear_bss)
-
-Allocating common symbols
-Common symbol       size              file
-
-arr                 0x32              MCAL/UART/UART.o
 
 Discarded input sections
 
@@ -47,6 +40,8 @@ Discarded input sections
  .text          0x00000000        0x0 MCAL/PORT/PORT_DDR.o
  .data          0x00000000        0x0 MCAL/PORT/PORT_DDR.o
  .bss           0x00000000        0x0 MCAL/PORT/PORT_DDR.o
+ .text.Pin_Mode
+                0x00000000      0x206 MCAL/PORT/PORT_DDR.o
  .text.Write_On_Specific_Bit
                 0x00000000       0xf2 MCAL/PORT/PORT_DDR.o
  .text.Toggle_Specific_Bit
@@ -73,14 +68,25 @@ Discarded input sections
                 0x00000000       0x78 MCAL/PORT/PORT_DDR.o
  .text.LSB_Port_Read
                 0x00000000       0x2c MCAL/PORT/PORT_DDR.o
+ .debug_info    0x00000000      0x3f4 MCAL/PORT/PORT_DDR.o
+ .debug_abbrev  0x00000000      0x115 MCAL/PORT/PORT_DDR.o
+ .debug_loc     0x00000000      0xa90 MCAL/PORT/PORT_DDR.o
+ .debug_aranges
+                0x00000000       0x88 MCAL/PORT/PORT_DDR.o
+ .debug_ranges  0x00000000       0x78 MCAL/PORT/PORT_DDR.o
+ .debug_line    0x00000000      0x86d MCAL/PORT/PORT_DDR.o
+ .debug_str     0x00000000      0x2bb MCAL/PORT/PORT_DDR.o
+ .comment       0x00000000       0x31 MCAL/PORT/PORT_DDR.o
+ .debug_frame   0x00000000       0xf4 MCAL/PORT/PORT_DDR.o
  .text          0x00000000        0x0 MCAL/UART/UART.o
  .data          0x00000000        0x0 MCAL/UART/UART.o
  .bss           0x00000000        0x0 MCAL/UART/UART.o
- .text.UART_Send_String
-                0x00000000       0x1a MCAL/UART/UART.o
+ .text.Uart_Send32
+                0x00000000       0x3a MCAL/UART/UART.o
+ .text.Uart_Recieve32
+                0x00000000       0x3a MCAL/UART/UART.o
  .text.UART_Receive_String
-                0x00000000       0x20 MCAL/UART/UART.o
- COMMON         0x00000000       0x32 MCAL/UART/UART.o
+                0x00000000       0x14 MCAL/UART/UART.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -113,22 +119,6 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.mul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.div
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.prologue
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.builtins
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.fmul
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc.fixed
-                0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
 
 Memory Configuration
 
@@ -259,7 +249,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x552
+.text           0x00000000      0x2e8
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
                 0x00000000                __vector_default
@@ -302,8 +292,6 @@ END GROUP
  *(.init4)
  .init4         0x00000060       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                 0x00000060                __do_copy_data
- .init4         0x00000076       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                0x00000076                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -314,82 +302,76 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000086        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
+ .init9         0x00000076        0x8 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  *(.init9)
  *(.text)
- .text          0x0000008e        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
-                0x0000008e                __vector_1
-                0x0000008e                __vector_12
-                0x0000008e                __bad_interrupt
-                0x0000008e                __vector_6
-                0x0000008e                __vector_3
-                0x0000008e                __vector_11
-                0x0000008e                __vector_13
-                0x0000008e                __vector_17
-                0x0000008e                __vector_19
-                0x0000008e                __vector_7
-                0x0000008e                __vector_5
-                0x0000008e                __vector_4
-                0x0000008e                __vector_9
-                0x0000008e                __vector_2
-                0x0000008e                __vector_15
-                0x0000008e                __vector_8
-                0x0000008e                __vector_14
-                0x0000008e                __vector_10
-                0x0000008e                __vector_16
-                0x0000008e                __vector_18
-                0x0000008e                __vector_20
-                0x00000092                . = ALIGN (0x2)
+ .text          0x0000007e        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
+                0x0000007e                __vector_1
+                0x0000007e                __vector_12
+                0x0000007e                __bad_interrupt
+                0x0000007e                __vector_6
+                0x0000007e                __vector_3
+                0x0000007e                __vector_11
+                0x0000007e                __vector_13
+                0x0000007e                __vector_17
+                0x0000007e                __vector_19
+                0x0000007e                __vector_7
+                0x0000007e                __vector_5
+                0x0000007e                __vector_4
+                0x0000007e                __vector_9
+                0x0000007e                __vector_2
+                0x0000007e                __vector_15
+                0x0000007e                __vector_8
+                0x0000007e                __vector_14
+                0x0000007e                __vector_10
+                0x0000007e                __vector_16
+                0x0000007e                __vector_18
+                0x0000007e                __vector_20
+                0x00000082                . = ALIGN (0x2)
  *(.text.*)
  .text.LCD_lcd_kick
-                0x00000092       0x1a HAL/LCD_DRIVER/LCD.o
-                0x00000092                LCD_lcd_kick
+                0x00000082       0x1a HAL/LCD_DRIVER/LCD.o
+                0x00000082                LCD_lcd_kick
  .text.LCD_check_lcd_isbusy
-                0x000000ac       0x2e HAL/LCD_DRIVER/LCD.o
-                0x000000ac                LCD_check_lcd_isbusy
+                0x0000009c       0x2e HAL/LCD_DRIVER/LCD.o
+                0x0000009c                LCD_check_lcd_isbusy
  .text.LCD_Send_A_Command
-                0x000000da       0x46 HAL/LCD_DRIVER/LCD.o
-                0x000000da                LCD_Send_A_Command
+                0x000000ca       0x46 HAL/LCD_DRIVER/LCD.o
+                0x000000ca                LCD_Send_A_Command
  .text.LCD_clear_screen
-                0x00000120        0x8 HAL/LCD_DRIVER/LCD.o
-                0x00000120                LCD_clear_screen
+                0x00000110        0x8 HAL/LCD_DRIVER/LCD.o
+                0x00000110                LCD_clear_screen
  .text.LCD_GOTO_XY
-                0x00000128       0x2e HAL/LCD_DRIVER/LCD.o
-                0x00000128                LCD_GOTO_XY
+                0x00000118       0x2e HAL/LCD_DRIVER/LCD.o
+                0x00000118                LCD_GOTO_XY
  .text.LCD_init
-                0x00000156       0x54 HAL/LCD_DRIVER/LCD.o
-                0x00000156                LCD_init
+                0x00000146       0x54 HAL/LCD_DRIVER/LCD.o
+                0x00000146                LCD_init
  .text.LCD_Send_A_Character
-                0x000001aa       0x46 HAL/LCD_DRIVER/LCD.o
-                0x000001aa                LCD_Send_A_Character
+                0x0000019a       0x46 HAL/LCD_DRIVER/LCD.o
+                0x0000019a                LCD_Send_A_Character
  .text.LCD_Send_A_String
-                0x000001f0       0x52 HAL/LCD_DRIVER/LCD.o
-                0x000001f0                LCD_Send_A_String
- .text.main     0x00000242       0x68 main.o
-                0x00000242                main
- .text.Pin_Mode
-                0x000002aa      0x206 MCAL/PORT/PORT_DDR.o
-                0x000002aa                Pin_Mode
+                0x000001e0       0x52 HAL/LCD_DRIVER/LCD.o
+                0x000001e0                LCD_Send_A_String
+ .text.main     0x00000232       0x6e main.o
+                0x00000232                main
  .text.Uart_init
-                0x000004b0       0x1a MCAL/UART/UART.o
-                0x000004b0                Uart_init
+                0x000002a0       0x1a MCAL/UART/UART.o
+                0x000002a0                Uart_init
  .text.Uart_Send
-                0x000004ca        0x8 MCAL/UART/UART.o
-                0x000004ca                Uart_Send
+                0x000002ba        0x8 MCAL/UART/UART.o
+                0x000002ba                Uart_Send
  .text.Uart_Recieve
-                0x000004d2        0x8 MCAL/UART/UART.o
-                0x000004d2                Uart_Recieve
- .text.Uart_Send32
-                0x000004da       0x3a MCAL/UART/UART.o
-                0x000004da                Uart_Send32
- .text.Uart_Recieve32
-                0x00000514       0x3a MCAL/UART/UART.o
-                0x00000514                Uart_Recieve32
-                0x0000054e                . = ALIGN (0x2)
+                0x000002c2        0x8 MCAL/UART/UART.o
+                0x000002c2                Uart_Recieve
+ .text.UART_Send_String
+                0x000002ca       0x1a MCAL/UART/UART.o
+                0x000002ca                UART_Send_String
+                0x000002e4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000054e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000054e                _exit
-                0x0000054e                exit
+ .fini9         0x000002e4        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000002e4                _exit
+                0x000002e4                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -408,11 +390,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000054e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000002e4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000552                _etext = .
+                0x000002e8                _etext = .
 
-.data           0x00800060        0xe load address 0x00000552
+.data           0x00800060       0x14 load address 0x000002e8
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -420,26 +402,26 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800060        0xe main.o
+                0x00800060       0x14 main.o
  *(.gnu.linkonce.r*)
-                0x0080006e                . = ALIGN (0x2)
-                0x0080006e                _edata = .
-                0x0080006e                PROVIDE (__data_end, .)
+                0x00800074                . = ALIGN (0x2)
+                0x00800074                _edata = .
+                0x00800074                PROVIDE (__data_end, .)
 
-.bss            0x0080006e        0x0
-                0x0080006e                PROVIDE (__bss_start, .)
+.bss            0x00800074        0x0
+                [!provide]                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
-                0x0080006e                PROVIDE (__bss_end, .)
-                0x00000552                __data_load_start = LOADADDR (.data)
-                0x00000560                __data_load_end = (__data_load_start + SIZEOF (.data))
+                [!provide]                PROVIDE (__bss_end, .)
+                0x000002e8                __data_load_start = LOADADDR (.data)
+                0x000002fc                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080006e        0x0
+.noinit         0x00800074        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080006e                _end = .
+                0x00800074                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -484,7 +466,6 @@ END GROUP
  .comment       0x00000000       0x30 HAL/LCD_DRIVER/LCD.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 main.o
- .comment       0x00000030       0x31 MCAL/PORT/PORT_DDR.o
  .comment       0x00000030       0x31 MCAL/UART/UART.o
 
 .note.gnu.avr.deviceinfo
@@ -507,69 +488,60 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x158
+.debug_aranges  0x00000000       0xd0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x58 HAL/LCD_DRIVER/LCD.o
  .debug_aranges
                 0x00000058       0x28 main.o
  .debug_aranges
-                0x00000080       0x88 MCAL/PORT/PORT_DDR.o
- .debug_aranges
-                0x00000108       0x50 MCAL/UART/UART.o
+                0x00000080       0x50 MCAL/UART/UART.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1229
+.debug_info     0x00000000      0xdd5
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x000004e6      0x422 HAL/LCD_DRIVER/LCD.o
- .debug_info    0x00000908      0x2fe main.o
- .debug_info    0x00000c06      0x3f4 MCAL/PORT/PORT_DDR.o
- .debug_info    0x00000ffa      0x22f MCAL/UART/UART.o
+ .debug_info    0x00000908      0x28f main.o
+ .debug_info    0x00000b97      0x23e MCAL/UART/UART.o
 
-.debug_abbrev   0x00000000      0x93b
+.debug_abbrev   0x00000000      0x854
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x000004a3      0x16a HAL/LCD_DRIVER/LCD.o
- .debug_abbrev  0x0000060d       0xeb main.o
- .debug_abbrev  0x000006f8      0x115 MCAL/PORT/PORT_DDR.o
- .debug_abbrev  0x0000080d      0x12e MCAL/UART/UART.o
+ .debug_abbrev  0x0000060d      0x101 main.o
+ .debug_abbrev  0x0000070e      0x146 MCAL/UART/UART.o
 
-.debug_line     0x00000000     0x103c
+.debug_line     0x00000000      0x7a1
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_line    0x00000116      0x301 HAL/LCD_DRIVER/LCD.o
- .debug_line    0x00000417      0x1f3 main.o
- .debug_line    0x0000060a      0x86d MCAL/PORT/PORT_DDR.o
- .debug_line    0x00000e77      0x1c5 MCAL/UART/UART.o
+ .debug_line    0x00000417      0x1c3 main.o
+ .debug_line    0x000005da      0x1c7 MCAL/UART/UART.o
 
-.debug_frame    0x00000000      0x2a8
+.debug_frame    0x00000000      0x1b8
  *(.debug_frame)
  .debug_frame   0x00000000       0xc4 HAL/LCD_DRIVER/LCD.o
- .debug_frame   0x000000c4       0x34 main.o
- .debug_frame   0x000000f8       0xf4 MCAL/PORT/PORT_DDR.o
- .debug_frame   0x000001ec       0xbc MCAL/UART/UART.o
+ .debug_frame   0x000000c4       0x44 main.o
+ .debug_frame   0x00000108       0xb0 MCAL/UART/UART.o
 
-.debug_str      0x00000000      0x5a9
+.debug_str      0x00000000      0x493
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x00000196      0x254 HAL/LCD_DRIVER/LCD.o
                                 0x28d (size before relaxing)
- .debug_str     0x000003ea       0x9a main.o
-                                0x26b (size before relaxing)
- .debug_str     0x00000484       0xd1 MCAL/PORT/PORT_DDR.o
-                                0x2bb (size before relaxing)
- .debug_str     0x00000555       0x54 MCAL/UART/UART.o
-                                0x207 (size before relaxing)
+ .debug_str     0x000003ea       0x5c main.o
+                                0x22d (size before relaxing)
+ .debug_str     0x00000446       0x4d MCAL/UART/UART.o
+                                0x20c (size before relaxing)
 
-.debug_loc      0x00000000      0xfcb
+.debug_loc      0x00000000      0x56e
  *(.debug_loc)
  .debug_loc     0x00000000      0x344 HAL/LCD_DRIVER/LCD.o
- .debug_loc     0x00000344       0x4c main.o
- .debug_loc     0x00000390      0xa90 MCAL/PORT/PORT_DDR.o
- .debug_loc     0x00000e20      0x1ab MCAL/UART/UART.o
+ .debug_loc     0x00000344       0x94 main.o
+ .debug_loc     0x000003d8      0x196 MCAL/UART/UART.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -589,12 +561,11 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x118
+.debug_ranges   0x00000000       0xa0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x48 HAL/LCD_DRIVER/LCD.o
  .debug_ranges  0x00000048       0x18 main.o
- .debug_ranges  0x00000060       0x78 MCAL/PORT/PORT_DDR.o
- .debug_ranges  0x000000d8       0x40 MCAL/UART/UART.o
+ .debug_ranges  0x00000060       0x40 MCAL/UART/UART.o
 
 .debug_macro
  *(.debug_macro)
