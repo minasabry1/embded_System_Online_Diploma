@@ -25,7 +25,7 @@
 uint8_t ADC_GetTemprature(uint16_t ADCVal)
 {
 	uint16_t TempVal = 0 ;
-	TempVal = ADCVal/(LM35_REFVOLT/1024);
+	TempVal = ((ADCVal * LM35_REFVOLT / 1024)) / 10;
 	return TempVal; //TempVal is DOUT after scalling according to LM35
 }
 
